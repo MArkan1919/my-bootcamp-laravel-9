@@ -24,7 +24,7 @@ class PasswordController extends Controller
             return back()->with('danger', 'Old password does not match.');
         }
 
-        User::find(auth()->user()->id)->update([
+        $request->user()->update([
             'password' => Hash::make($validatedData['new_password'])
         ]);
 
