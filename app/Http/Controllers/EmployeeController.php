@@ -46,7 +46,7 @@ class EmployeeController extends Controller
             'image'   => 'required|image|mimes:png,jpg,jpeg|max:2048'
         ]);
 
-        if ($request->file('image')) {
+        if ($request->hasFile('image')) {
             $extension = $request->file('image')->getClientOriginalExtension();
             $imageName = $request->name . '-' . now()->timestamp . '.' . $extension;
             $validatedData['image'] = $request->file('image')->storeAs('images', $imageName);
@@ -96,7 +96,7 @@ class EmployeeController extends Controller
             'image'   => 'image|mimes:png,jpg,jpeg|max:2048'
         ]);
 
-        if ($request->file('image')) {
+        if ($request->hasFile('image')) {
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
