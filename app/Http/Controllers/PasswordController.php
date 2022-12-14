@@ -16,7 +16,7 @@ class PasswordController extends Controller
     {
         $validatedData = $request->validate([
             'old_password' => ['required'],
-            'new_password' => ['required', 'min:5', 'max:225', 'confirmed'],
+            'new_password' => ['required', 'min:5', 'confirmed'],
         ]);
 
         if (!Hash::check($validatedData['old_password'], auth()->user()->password)) {
